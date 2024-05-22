@@ -1,11 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, use, Suspense } from 'react';
 import './Dashboard.css';
 import AddProduct from './AddProduct';
 
-const ProductItem = ({ product }) => {
+const fetchProducts = async () => {
+  const res = await fetch(
+    'http://localhost:8000/server/endpoints/getProducts.php'
+  );
+  return res.json();
+};
+
+const ProductItem = ({ product }) =>  {
   return (
     <div>
-      <h3>{product.name}</h3>
+      <h3>{product.productName}</h3>
+    </div>
+  )
+}
+
+const ProductItems = () => {
+  const allProducts = use(fetchProducts());
+  console.log(allProducts.products);
+
+  return (
+    <div>
+        {allProducts.products.map((product, index) => (
+        <ProductItem key={index} product={product} />
+      ))}
     </div>
   );
 };
@@ -25,9 +45,10 @@ const Dashboard = () => {
         opdateres og oprettes.
       </p>
       <AddProduct addProduct={addProduct} />
-      {products.map((product, index) => (
-        <ProductItem key={index} product={product} />
-      ))}
+      <Suspense fallback={<h2>Indlæser...</h2>}>
+        <ProductItems />
+      </Suspense>
+    
     </>
   );
 };

@@ -9,8 +9,16 @@ class ProductRepository {
         $this->databaseService = new DatabaseService();
     }
 
-    public function get() {
-        
+    public function getAll() {
+        $connection = $this->databaseService->getConnection();
+
+        $getProducts = 'SELECT * FROM products';
+
+        $statement = $connection->prepare($getProducts);
+
+        $statement->execute();
+        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $rows;
     }
 
     public function store(Product $product) {
