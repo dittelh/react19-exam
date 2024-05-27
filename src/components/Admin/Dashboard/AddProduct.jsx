@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import './Dashboard.css';
 import { postRequest } from '../../../functions';
 
-const AddProduct = ({ addProduct }) => {
-    
-  const addProductAction = (formData) => {
+const Submit = () => {
+  const { pending } = useFormStatus();
+  return (
+    <button disabled={pending} type="submit">
+      {pending ? 'Loader...' : 'Opret produkt'}
+    </button>
+  );
+};
+
+const AddProduct = () => {
+  const addProductAction = async (prevState, formData) => {
     const newProduct = {
       name: formData.get('name'),
       imgPath: formData.get('imgPath'),
@@ -14,24 +23,31 @@ const AddProduct = ({ addProduct }) => {
       stock: formData.get('stock'),
     };
 
-    postRequest(
+    var message = '';
+    await postRequest(
       'http://localhost:8000/server/endpoints/addProduct.php',
       newProduct
     )
       .then((res) => {
-        addProduct(newProduct);
-        console.log(res);
+        console.log(newProduct);
+        message = 'Produktet blev tilføjet!';
       })
       .catch((err) => {
-        console.log(err);
+        message = 'Produktet er ikke blevet tilføjet';
       });
+    console.log(message);
+    return message;
   };
+
+  const [message, formAction] = useActionState(addProductAction, null);
 
   return (
     <>
-      <form action={addProductAction} className="forms">
+      <form action={formAction} className="forms">
         <h2>Opret produkt:</h2>
-        <label htmlFor="name">Produkt navn:</label>
+        <label className="labels" htmlFor="name">
+          Produkt navn:
+        </label>
         <input
           type="text"
           required
@@ -40,7 +56,9 @@ const AddProduct = ({ addProduct }) => {
           placeholder="Indsæt produktets navn"
         />
 
-        <label htmlFor="imgPath">Billede sti:</label>
+        <label className="labels" htmlFor="imgPath">
+          Billede sti:
+        </label>
         <input
           type="text"
           required
@@ -49,7 +67,9 @@ const AddProduct = ({ addProduct }) => {
           placeholder="Indsæt billedets sti"
         />
 
-        <label htmlFor="price">Prisen:</label>
+        <label className="labels" htmlFor="price">
+          Prisen:
+        </label>
         <input
           type="number"
           required
@@ -58,7 +78,9 @@ const AddProduct = ({ addProduct }) => {
           placeholder="Indsæt prisen"
         />
 
-        <label htmlFor="description">Beskrivelsen:</label>
+        <label className="labels" htmlFor="description">
+          Beskrivelsen:
+        </label>
         <input
           type="text"
           required
@@ -67,13 +89,17 @@ const AddProduct = ({ addProduct }) => {
           placeholder="Indsæt beskrivelsen"
         />
 
-        <label htmlFor="category">Kategori:</label>
+        <label className="labels" htmlFor="category">
+          Kategori:
+        </label>
         <select name="category" id="category">
           <option value="Alcholic">Med alkohol</option>
           <option value="Non-alcholic">Uden alkohol</option>
         </select>
 
-        <label htmlFor="stock">Antal:</label>
+        <label className="labels" htmlFor="stock">
+          Antal:
+        </label>
         <input
           type="number"
           required
@@ -81,7 +107,8 @@ const AddProduct = ({ addProduct }) => {
           id="stock"
           placeholder="Indsæt antal"
         />
-        <button type="submit">Opret produkt</button>
+        <Submit />
+        {message}
       </form>
     </>
   );

@@ -1,4 +1,117 @@
-.forms{
-    display: flex;
-    flex-direction: column;
+.forms {
+  display: flex;
+  flex-direction: column;
+  width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  background-color: #c6e1e5;
+  padding: 3rem 2rem;
+  border-radius: 5px;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 25px 0;
+}
+
+.labels {
+  font-family: Raleway;
+}
+
+.itemContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: #c6e1e5;
+  margin-bottom: 2rem;
+}
+
+.addedDiv {
+  display: flex;
+  flex-direction: column;
+  width: 35vw;
+  flex-wrap: wrap;
+}
+
+.itemImg {
+  width: 5vw;
+  height: 5vw;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+}
+
+.itemName {
+  font-family: RalewayBold;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  color: #0a415e;
+}
+
+.itemPrice {
+  font-family: RalewayBold;
+  margin-top: 0;
+}
+
+.itemP {
+  font-family: Raleway;
+  margin-top: 0;
+}
+
+.itemText {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.addedProductDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+}
+
+.titleH2 {
+  font-family: RalewayBold;
+  color: #0a415e;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.centerDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 33vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+}
+
+.centerDiv p {
+  font-family: Raleway;
+  margin-top: 0;
+}
+
+.deleteBtn {
+  border: 2px solid #911616;
+}
+
+.deleteBtn:hover {
+  background-color: #911616;
+  color: #ffffff;
 }

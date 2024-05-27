@@ -45,8 +45,16 @@ class ProductRepository {
         $statement->execute();
     }
 
-    public function delete() {
-        
+    public function deleteById($id) {
+        $connection = $this->databaseService->getConnection();
+
+        $deleteProductSQL = 
+        'DELETE FROM products WHERE productID = :productID';
+
+        $statement = $connection->prepare($deleteProductSQL);
+        $statement->bindParam(':productID', $id);
+
+        $statement->execute();
     }
     
     public function update() {

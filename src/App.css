@@ -1,3 +1,54 @@
-html{
-    background-color: #C6E1E5;
+body {
+  background-color: #ffffff;
+  margin: 0;
+}
+
+@font-face {
+  font-family: Cronus;
+  src: url('./assets/fonts/CRONUS\ ROUND.OTF');
+}
+
+@font-face {
+  font-family: Readex;
+  src: url('./assets/fonts/READEXPRO-VARIABLEFONT_HEXP\,WGHT.TTF');
+}
+
+@font-face {
+  font-family: Raleway;
+  src: url('./assets/fonts/RALEWAY-REGULAR.TTF');
+}
+
+@font-face {
+  font-family: RalewayBold;
+  src: url('./assets/fonts/RALEWAY-SEMIBOLD.TTF');
+}
+
+.title{
+  font-family: RalewayBold;
+  color:#0a415e;
+  text-transform: uppercase;
+  display: flex;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: flex-start;
+}
+
+button{
+  font-family: RalewayBold;
+  text-transform: uppercase;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #169149;
+  border-radius: 5px;
+  padding: .5rem 1rem;
+}
+
+button:hover{
+  background-color: #169149;
+  color: #ffffff;
 }

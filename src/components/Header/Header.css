@@ -1,3 +1,30 @@
 .logo {
-  width: 20vw;
+  width: 5vw;
+}
+
+.header {
+  background-color: #c6e1e5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonDiv {
+  display: flex;
+  margin-right: 1rem;
+  gap: 2rem;
+}
+
+.headerBtn {
+  height: 15%;
+  background-color: unset;
+  border: 2px solid #0a415e;
+  color: #0a415e;
+}
+
+.headerBtn:hover {
+  height: 15%;
+  background-color: #d8cb67;
+  border: 2px solid #0a415e;
+  color: #0a415e;
 }
