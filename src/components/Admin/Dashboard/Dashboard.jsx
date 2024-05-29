@@ -5,14 +5,14 @@ import { postRequest } from '../../../functions';
 
 const fetchProducts = async () => {
   const res = await fetch(
-    'http://localhost:8000/server/endpoints/getProducts.php'
+    'https://react-synopsis.dittelh.dk/server/endpoints/getProducts.php'
   );
   return res.json();
 };
 
 const ProductItem = ({ product, removeProduct }) => {
   const deleteProduct = (formData) => {
-    postRequest('http://localhost:8000/server/endpoints/deleteProduct.php', {
+    postRequest('https://react-synopsis.dittelh.dk/server/endpoints/deleteProduct.php', {
       id: formData.get('id'),
     })
       .then((res) => {

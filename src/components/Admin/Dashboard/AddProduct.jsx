@@ -25,7 +25,7 @@ const AddProduct = () => {
 
     var message = '';
     await postRequest(
-      'http://localhost:8000/server/endpoints/addProduct.php',
+      'https://react-synopsis.dittelh.dk/server/endpoints/addProduct.php',
       newProduct
     )
       .then((res) => {

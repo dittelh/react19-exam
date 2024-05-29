@@ -10,7 +10,7 @@ const Login = ({ setIsLoggedIn }) => {
       password: formData.get('password'),
     };
 
-    postRequest('http://localhost:8000/server/endpoints/login.php', loginData)
+    postRequest('https://react-synopsis.dittelh.dk/server/endpoints/login.php', loginData)
       .then((res) => {
         if (res.code === 200) {
           console.log('Logget ind');

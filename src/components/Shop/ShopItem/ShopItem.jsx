@@ -3,9 +3,7 @@ import '../Shop.css';
 import { CartContext } from '../../../App';
 
 const fetchProducts = async () => {
-  const res = await fetch(
-    'http://localhost:8000/server/endpoints/getProducts.php'
-  );
+  const res = await fetch('https://react-synopsis.dittelh.dk/server/endpoints/getProducts.php');
   return res.json();
 };
 
