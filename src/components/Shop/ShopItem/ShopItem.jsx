@@ -1,4 +1,4 @@
-import React, { use, useActionState } from 'react';
+import React, { use } from 'react';
 import '../Shop.css';
 import { CartContext } from '../../../App';
 
@@ -14,17 +14,10 @@ const ShopItems = () => {
 
   const allProducts = use(fetchProducts());
 
-  const addToCartAction = async (prevState, formData) => {
-    try {
-      const product = formData.get('product');
-      await cart.addToCart(product);
-      return 'Tilføjet til kurven';
-    } catch (e) {
-      return 'Blev ikke tilføjet til kurven';
-    }
+  const addToCartAction = (formData) => {
+    const product = formData.get('product');
+    cart.addToCart(product);
   };
-
-  const [message, formAction] = useActionState(addToCartAction, null);
 
   return (
     <div className="productsContainer">
@@ -40,7 +33,7 @@ const ShopItems = () => {
             <p className="productP">{product.description}</p>
             <p className="productPrice">{product.price} kr.</p>
           </div>
-          <form action={formAction}>
+          <form action={addToCartAction}>
             <input
               type="hidden"
               name="product"
@@ -48,7 +41,6 @@ const ShopItems = () => {
             />
             <button type="submit">Køb produkt</button>
           </form>
-          {message}
         </div>
       ))}
     </div>
