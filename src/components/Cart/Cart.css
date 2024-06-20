@@ -1,0 +1,11 @@
+.orderSucces{
+    border: 2px solid #169149;
+    background-color: #1691493f;
+    font-family: RalewayBold;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

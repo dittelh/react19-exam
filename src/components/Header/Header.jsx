@@ -5,20 +5,16 @@ import { CartContext } from '../../App';
 
 const Header = ({ setCurrentComponent }) => {
   const cart = use(CartContext);
-
-  const setComponent = (component) => {
-    setCurrentComponent(component);
-  };
-
+  
   return (
     <div className="header">
       <img className="logo" src={logo} alt="Logo" />
       <div className='buttonDiv'>
-        <button className='headerBtn' onClick={() => setComponent('shop')}>Shoppen</button>
-        <button className='headerBtn' onClick={() => setComponent('cart')}>
+        <button className='headerBtn' onClick={() => setCurrentComponent('shop')}>Shoppen</button>
+        <button className='headerBtn' onClick={() => setCurrentComponent('cart')}>
           Kurv {cart.cartItems.length}
         </button>
-        <button className='headerBtn' onClick={() => setComponent('admin')}>Admin login</button>
+        <button className='headerBtn' onClick={() => setCurrentComponent('admin')}>Admin login</button>
       </div>
     </div>
   );

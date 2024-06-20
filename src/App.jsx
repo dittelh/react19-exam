@@ -19,12 +19,6 @@ const CartProvider = ({ children }) => {
       setCartItems((oldItems) => [...oldItems, parsedItem]);
     },
     buyItems: () => {
-      let orders = [];
-      if (localStorage.getItem('orders') !== null) {
-        orders = JSON.parse(localStorage.getItem('orders'));
-      }
-      orders.push(cartItems);
-      localStorage.setItem('orders', JSON.stringify(orders));
       setCartItems([]);
     },
     deleteFromCart: (product) => {
@@ -53,7 +47,7 @@ function App() {
       <CartProvider>
         <Header setCurrentComponent={setCurrentComponent} />
         {isLoggedIn && currentComponent === 'admin' && (
-          <Dashboard setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+          <Dashboard setIsLoggedIn={setIsLoggedIn} />
         )}
         {!isLoggedIn && currentComponent === 'admin' && (
           <Login setIsLoggedIn={setIsLoggedIn} />

@@ -29,13 +29,11 @@ const AddProduct = () => {
       newProduct
     )
       .then((res) => {
-        console.log(newProduct);
         message = 'Produktet blev tilføjet!';
       })
       .catch((err) => {
         message = 'Produktet er ikke blevet tilføjet';
       });
-    console.log(message);
     return message;
   };
 

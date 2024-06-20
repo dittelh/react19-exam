@@ -55,7 +55,6 @@ function createAdmin(){
 
     $userId = 1;
     $email = 'admin@admin.dk';
-    $role = 'admin';
 
     $statement = $connection->prepare($sql);
     $statement->bindParam(':userID', $userId);

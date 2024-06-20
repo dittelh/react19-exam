@@ -10,6 +10,8 @@ const fetchProducts = async () => {
 const ShopItems = () => {
   const cart = use(CartContext);
 
+  
+
   const allProducts = use(fetchProducts());
 
   const addToCartAction = (formData) => {
@@ -19,7 +21,7 @@ const ShopItems = () => {
 
   return (
     <div className="productsContainer">
-      {allProducts.products.map((product, index) => (
+      {allProducts.products.map((product) => (
         <div key={product.productID} className="productContainer">
           <img
             className="productImg"

@@ -13,7 +13,6 @@ const Login = ({ setIsLoggedIn }) => {
     postRequest('https://react-synopsis.dittelh.dk/server/endpoints/login.php', loginData)
       .then((res) => {
         if (res.code === 200) {
-          console.log('Logget ind');
           localStorage.setItem('isLoggedIn', 'true');
           setIsLoggedIn(true);
         }

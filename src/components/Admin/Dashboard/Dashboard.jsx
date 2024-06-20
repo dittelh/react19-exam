@@ -72,15 +72,11 @@ const ProductItems = () => {
   );
 };
 
-const Dashboard = ({ setIsLoggedIn, isLoggedIn }) => {
+const Dashboard = ({ setIsLoggedIn }) => {
   const logout = () => {
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
   };
-
-  if (!isLoggedIn) {
-    return <h2>You have been logged out.</h2>;
-  }
 
   return (
     <>
